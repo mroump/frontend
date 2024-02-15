@@ -19,8 +19,5 @@ services:
       - start-dev 
       - --import-realm
     volumes:
-<<<<<<< HEAD
-      - ./realm.json:/opt/keycloak/data/import/realm.json
-=======
-      - ./realm.json:/opt/keycloak/data/import/realm.json
->>>>>>> 65eddfcfa7a2dac9410f0721bb9d88209fee7d04
+      - /realm.json:/opt/keycloak/data/import/realm.json
+
