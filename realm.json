@@ -57,9 +57,9 @@
             "clientId": "myclient",
             "enabled": true,
             "publicClient": true,
-            "baseUrl": "/myclient",
+            "baseUrl": "",
             "redirectUris": [
-                "/http://localhost:4200/*"
+                "http://localhost:4200/*"
             ],
             "webOrigins": [
                 "http://localhost:4200"
