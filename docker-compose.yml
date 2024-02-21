@@ -1,23 +1,29 @@
-services: 
-  frontend:
-    build: .
-    ports:
-      - "4200:4200"
-      - "49153:49153"
-    volumes:
-      - "/frontend/node_modules"
-      - ".:/frontend"
+version: "3"
 
-  myrealm-keycloak:
-    image: quay.io/keycloak/keycloak
+services: 
+
+  docker-angular-keycloak:
+    image: quay.io/keycloak/keycloak:23.0.6
     ports:
-      - "8188:8080"
+      - 8080:8080
     environment:
       KEYCLOAK_ADMIN: admin 
       KEYCLOAK_ADMIN_PASSWORD: admin
+      KEYCLOAK_IMPORT: /data/import/realm.json
     command: 
       - start-dev 
       - --import-realm
     volumes:
       - /realm.json:/opt/keycloak/data/import/realm.json
+
+      
+  frontend:
+    build: .
+    ports:
+      - 4200:4200
+    volumes:
+      - "/frontend/node_modules"
+      - ".:/frontend"
+
+
 

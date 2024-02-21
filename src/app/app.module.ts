@@ -3,27 +3,21 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { QuotesComponent } from './quotes/quotes.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule} from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
 
 export function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
   keycloak.init({
     config: {
-    url: 'http://localhost:8188',
-    realm: 'myrealm',
-    clientId: 'myclient'
+      url: 'http://localhost:8080/admin',
+      realm: 'frontend',
+      clientId: 'myclient'
     },
-  initOptions: {
-  onLoad: 'login-required',
-  silentCheckSsoRedirectUri:
-    window.location.origin + '/assets/silent-check-sso.html'
-  }
+    initOptions: {
+      onLoad: 'check-sso',
+      silentCheckSsoRedirectUri: 
+        window.location.origin + '/assets/silent-check-sso.html'
+    }
   });
 }
 
@@ -33,13 +27,8 @@ export function initializeKeycloak(keycloak: KeycloakService) {
     NavbarComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,  
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
     KeycloakAngularModule,
   ],
   providers: [
@@ -48,7 +37,7 @@ export function initializeKeycloak(keycloak: KeycloakService) {
       useFactory: initializeKeycloak,
       multi: true,
       deps: [KeycloakService],
-    }    
+    }
   ],
   bootstrap: [AppComponent]
 })

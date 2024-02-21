@@ -1,5 +1,5 @@
 {
-    "realm": "myrealm",
+    "realm": "frontend",
     "enabled": true,
     "sslRequired": "external",
     "registrationAllowed": true,
@@ -12,7 +12,7 @@
         {
             "username": "myuser",
             "enabled": true,
-            "email": "",
+            "email": "myuser@myuser.com",
             "firstName": "myuserFirstName",
             "lastName": "myuserLastName",
             "credentials": [
@@ -57,7 +57,6 @@
             "clientId": "myclient",
             "enabled": true,
             "publicClient": true,
-            "baseUrl": "",
             "redirectUris": [
                 "http://localhost:4200/*"
             ],
