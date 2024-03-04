@@ -23,7 +23,7 @@ const keycloakService = new KeycloakService();
     AppRoutingModule,
     RouterModule
   ],
-  providers: [AppAuthGuard, {
+  providers: [AppAuthGuard, KeycloakService, {
     provide: KeycloakService,
     useValue: keycloakService
   }] ,
