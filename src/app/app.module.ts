@@ -16,26 +16,17 @@ const keycloakService = new KeycloakService();
 
 @NgModule
 ({
-  declarations: [
-    //AppComponent
-    //XyzComponent,
-    //FirstpageComponent
-  ],
+  declarations: [],
   imports: [
     KeycloakAngularModule,
     BrowserModule,
     AppRoutingModule,
-    RouterModule//,
-    //RouterLink, RouterLinkActive, RouterOutlet
+    RouterModule
   ],
   providers: [AppAuthGuard, {
     provide: KeycloakService,
     useValue: keycloakService
   }] ,
-  //entryComponents: [AppComponent],
-  bootstrap: [AppComponent]
-  //bootstrapApplication(AppComponent);
-
 })
 
 export class AppModule implements DoBootstrap { 

@@ -4,22 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppAuthGuard } from './app.authguard';
 import { XyzComponent } from './xyz/xyz.component';
 import { FirstpageComponent } from './firstpage/firstpage.component';
-
-const routes: Routes = [
-  {
-    path: 'xyz',
-    component: XyzComponent,
-    canActivate: [AppAuthGuard]
-    //data: { roles: ['user'] },
-  },
-  {
-    path: '',
-    component: FirstpageComponent,  
-  },
-];
+import { APP_ROUTES } from './app.routes';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(APP_ROUTES)],
   exports: [RouterModule],
   providers: [AppAuthGuard]
 })
