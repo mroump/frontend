@@ -23,6 +23,7 @@
     "@angular/platform-server": "^17.1.0",
     "@angular/router": "^17.1.0",
     "@angular/ssr": "^17.1.3",
+    "bootstrap": "^5.3.3",
     "express": "^4.18.2",
     "keycloak-angular": "^15.1.0",
     "keycloak-js": "^23.0.6",
