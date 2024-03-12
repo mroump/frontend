@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { XyzComponent } from './xyz/xyz.component';
 import { KeycloakAngularModule } from 'keycloak-angular';
 
 @Component({
@@ -12,5 +11,6 @@ import { KeycloakAngularModule } from 'keycloak-angular';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'Frontend';
+  
 }

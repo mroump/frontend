@@ -11,21 +11,27 @@ import { AppComponent } from './app.component';
 import { XyzComponent } from './xyz/xyz.component';
 import { FirstpageComponent } from './firstpage/firstpage.component';
 import {bootstrapApplication} from '@angular/platform-browser';
+import * as globalVariables from './globalVariables';
 
 const keycloakService = new KeycloakService();
 
 @NgModule
 ({
-  declarations: [],
+  schemas: [
+  CUSTOM_ELEMENTS_SCHEMA
+  ],
   imports: [
     KeycloakAngularModule,
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule, FirstpageComponent
   ],
-  providers: [AppAuthGuard, KeycloakService, {
+  providers: [AppAuthGuard, 
+    KeycloakService, 
+    {
     provide: KeycloakService,
     useValue: keycloakService
+    ////useFactory: () => keycloakService
   }] ,
 })
 
@@ -34,17 +40,18 @@ export class AppModule implements DoBootstrap {
     keycloakService
       .init({
         config: {
-          url: 'http://localhost:8080',
-          realm: 'frontend',
-          clientId: 'myclient',
-        },
+          url: globalVariables.keycloakUrl,
+          realm: globalVariables.keycloakrealm,
+          clientId: globalVariables.keycloakclientId,
+        },        
         initOptions: {
           onLoad: 'check-sso',
           silentCheckSsoRedirectUri:
             window.location.origin + '/assets/silent-check-sso.html',
-          checkLoginIframe: false,
-          redirectUri: 'http://localhost:4200',
+          checkLoginIframe: false
         },
+       
+        loadUserProfileAtStartUp: true
       })
       .then(() => {
         app.bootstrap(AppComponent);

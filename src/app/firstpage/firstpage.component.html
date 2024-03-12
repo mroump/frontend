@@ -1,2 +1,25 @@
-<p>firstpage works!</p>
-<a routerLink="/xyz">XYZ</a>
+<p>Hello !!!!!!!!!</p>
+<button (click)="logout()">Logout</button>
+
+<div class="row">
+    <div class="col-md-3">
+        <ul>
+            <li>
+                <a routerLink="/profile" routerLinkActive="active" class="links">Profile</a>
+            </li>
+            <li>
+                <a routerLink="/experiments" routerLinkActive="active" class="links">Experiments</a>
+            </li>
+            <li>
+                <a routerLink="/xapps" routerLinkActive="active" class="links">xApps</a>
+            </li>
+            <li>
+                <a routerLink="/repository" routerLinkActive="active" class="links">Repository</a>
+            </li>
+        </ul>
+        
+    </div>
+    <div class="col-md-3">
+        <router-outlet> </router-outlet>
+    </div>
+</div>

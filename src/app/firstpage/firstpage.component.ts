@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 import { XyzComponent } from '../xyz/xyz.component';
+import { HeaderComponent } from '../header/header.component';
+import {KeycloakService} from 'keycloak-angular';
+import * as globalVariables from '../globalVariables';
 
 @Component({
   selector: 'app-firstpage',
@@ -9,11 +12,17 @@ import { XyzComponent } from '../xyz/xyz.component';
   templateUrl: './firstpage.component.html',
   styleUrl: './firstpage.component.css'
 })
+
 export class FirstpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private keycloak: KeycloakService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+      console.log(this.keycloak.getUsername());
   }
+   
 
+  async logout() {
+    window.location.href = globalVariables.keycloakLogoutUrl;
+  }
 }
