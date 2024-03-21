@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppAuthGuard } from './app.authguard';
+import { KeycloakAuthGuard } from './app.authguard';
 import { APP_ROUTES } from './app.routes';
 
 @NgModule({
   imports: [RouterModule.forRoot(APP_ROUTES)],
-  exports: [RouterModule],
-  providers: [AppAuthGuard]
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

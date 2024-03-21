@@ -1,19 +1,20 @@
+
 <p>Hello !!!!!!!!!</p>
 <button (click)="logout()">Logout</button>
 
 <div class="row">
     <div class="col-md-3">
-        <ul>
-            <li>
+        <ul class="menu">
+            <li class="menu">
                 <a routerLink="/profile" routerLinkActive="active" class="links">Profile</a>
             </li>
-            <li>
+            <li class="menu">
                 <a routerLink="/experiments" routerLinkActive="active" class="links">Experiments</a>
             </li>
-            <li>
+            <li class="menu">
                 <a routerLink="/xapps" routerLinkActive="active" class="links">xApps</a>
             </li>
-            <li>
+            <li class="menu">
                 <a routerLink="/repository" routerLinkActive="active" class="links">Repository</a>
             </li>
         </ul>
@@ -23,3 +24,4 @@
         <router-outlet> </router-outlet>
     </div>
 </div>
+

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import {KeycloakService} from '../keycloak-service.service';
 
 
 @Component({
@@ -8,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  @Input() fullname = '';
 
+  constructor(private readonly keycloak: KeycloakService) { }
+
+  public logout() {
+    this.keycloak.logout();
+  }
 }

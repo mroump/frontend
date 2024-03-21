@@ -1,54 +1,42 @@
-import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { KeycloakService, KeycloakAuthGuard } from 'keycloak-angular';
+import {
+  CanActivate,
+  Router,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree
+} from '@angular/router';
 
-@Injectable()
-export class AppAuthGuard extends KeycloakAuthGuard {
-  public FirstName='';
-  public LastName='';
+import {KeycloakService} from './keycloak-service.service';
+
+
+export abstract class KeycloakAuthGuard implements CanActivate {
+
+  protected authenticated: boolean;
+  protected roles: string[];
+
   constructor(
-    protected override router: Router,
-    protected override keycloakAngular: KeycloakService
-  ) {
-    super(router, keycloakAngular);
-  }
+    protected router: Router,
+    protected keycloakAngular: KeycloakService
+  ) {}
 
-  isAccessAllowed(
+  async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-    let permission;
-    //let FirstName='';
-    //let LastName='';
-      if (!this.authenticated) {
-        this.keycloakAngular.login().catch((e) => console.error(e));
-        return reject(false);
-      }
-      else{
-        this.keycloakAngular.loadUserProfile().then(user => {
-          console.log(user.firstName);
-          console.log(user.lastName);
-        }) 
-      }
-      const requiredRoles: string[] = route.data.roles;
-      if (!requiredRoles || requiredRoles.length === 0) {
-        permission = true;
-      } else {
-        if (!this.roles || this.roles.length === 0) {
-        permission = false
-        }
-        if (requiredRoles.every((role) => this.roles.includes(role)))
-        {
-            permission=true;
-        } else {
-            permission=false;
-        };
-      }
-      if(!permission){
-          this.router.navigate(['/']);
-      }
-      resolve(permission)
-    });
+  ): Promise<boolean | UrlTree> {
+    try {
+      this.authenticated = await this.keycloakAngular.isLoggedIn();
+      this.roles = await this.keycloakAngular.getUserRoles(true);
+
+      return await this.isAccessAllowed(route, state);
+    } catch (error) {
+      throw new Error(
+        'An error happened during access validation. Details:' + error
+      );
+    }
   }
+
+  abstract isAccessAllowed(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Promise<boolean | UrlTree>;
 }
