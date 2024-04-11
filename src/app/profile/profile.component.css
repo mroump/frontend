@@ -1,0 +1,17 @@
+label {
+    font-size: small;
+    margin-left: 50px;
+}
+
+.form-control {
+    width: 75%;
+    margin-bottom: 5px;
+    margin-left: 50px;
+}
+
+button {
+    margin: 1px;
+    padding: 6px 20px;
+    border: 2px solid;
+}
+

@@ -1,4 +1,17 @@
 
 <app-header [fullname]="fullname"></app-header>
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [(opened)]="opened" >
+        <mat-list>
+            <mat-list-item><a routerLink="/profile"><u>Profile</u></a></mat-list-item>
+            <mat-list-item><a routerLink="/experiments"><u>Experiments</u></a></mat-list-item>
+            <mat-list-item><a routerLink="/xapps"><u>xApps</u></a></mat-list-item>
+            <mat-list-item><a routerLink="/repository"><u>Repository</u></a></mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <!-- <button mat-button (click)="opened=!opened">menu</button> -->
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>       
+</mat-sidenav-container>
 <app-footer></app-footer>

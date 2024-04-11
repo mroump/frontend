@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {  APP_INITIALIZER, NgModule, CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, ApplicationRef } from '@angular/core';
+import {  APP_INITIALIZER, NgModule, DoBootstrap, ApplicationRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
@@ -11,10 +11,9 @@ import { KeycloakAngularModule } from './keycloak-angular.module';
 import { KeycloakAuthGuard } from './app.authguard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { XyzComponent } from './xyz/xyz.component';
-import { FirstpageComponent } from './firstpage/firstpage.component';
 import {bootstrapApplication} from '@angular/platform-browser';
 import * as globalVariables from './globalVariables';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -39,6 +38,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     KeycloakAngularModule,
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
@@ -48,7 +48,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
       deps: [KeycloakService]
     }
   ] ,
-   bootstrap: [AppComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
 
