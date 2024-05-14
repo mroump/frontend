@@ -429,9 +429,7 @@ export class KeycloakService {
     }
 
     if (!this._instance.authenticated) {
-      throw new Error(
-        'The user profile was not loaded as the user is not logged in.'
-      );
+      console.log('The user profile was not loaded as the user is not logged in.');
     }
     return (this._userProfile = await this._instance.loadUserProfile());
   }

@@ -14,9 +14,7 @@ import {KeycloakService} from '../keycloak-service.service';
 export class ProfileComponent implements OnInit {
 
   fullname: string = '';
-  firstname: string = '';
-  lastname: string = ''!;
-  email: string = '';
+  userData: any;
    //public isLoggedIn = false;
   public userProfile: KeycloakProfile | null = null;
   // submitForm = this.formBuilder.group({
@@ -28,11 +26,12 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   public async ngOnInit() {
- 
-    this.userProfile = await this.keycloak.loadUserProfile();
-    this.fullname = this.userProfile.firstName + '  ' + this.userProfile.lastName;
-    console.log(this.userProfile.firstName);
+         
+    this.userData = await this.keycloak.loadUserProfile();
+    //this.fullname = this.userProfile.firstName + '  ' + this.userProfile.lastName;
     
+    console.log(this.userData.attributes['address']);
+
   }
 
   // onSubmit(): void { 
