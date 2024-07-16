@@ -1,0 +1,41 @@
+<h3 style="margin-left: 50px;">Experiment</h3>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div>
+        <a href="/experiments">Back</a>
+    </div>
+    <div>
+        <label for="name">Name</label><br>
+        <input formControlName="name" id="name" [(ngModel)]="experiment.name"  type="text" class="form-control" >
+        <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+            <div *ngIf="f['name'].errors && f['name'].errors['required']">Νame is required.</div>
+        </div>
+    </div>
+    <div>
+        <label for="yamldefinition">
+            YAML Definition
+        </label><br>
+    
+        <div class="col-8">
+            <label class="btn btn-default p-0">
+                <input type="file" class="uploadInput" id="file" (change)="selectFile($event)" />
+            </label>
+        </div>
+    </div>
+
+    <div>
+        <label for="startdate">
+            Start Date
+        </label><br>
+        <input id="startdate" [(ngModel)]="experiment.startdate" type="datetime" class="form-control" formControlName="startdate">
+    </div>
+    <div>
+        <label for="enddate">
+            End Date
+        </label><br>
+        <input id="enddate" [(ngModel)]="experiment.enddate" type="datetime" class="form-control" formControlName="enddate">
+    </div>
+
+    <button  type="submit" [disabled]="!(form.valid && currentFile)" style="margin-left: 50px;" >Update</button>
+
+</form>

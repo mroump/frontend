@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Schedule the Experiment!</h2>
+
+<div mat-dialog-content >
+   
+    <table>
+        <tr>
+            <td>
+                <mat-label for="startdate">Start Date: </mat-label><br>
+                <mat-form-field>
+                    <input matInput
+                        placeholder="dd.MM.yyyy hh:mm"
+                        [(ngModel)]="data.startdate"
+                        type="datetime-local"
+                                 
+                        class="form-control">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-label for="enddate">End Date: </mat-label><br>
+                <mat-form-field>
+                    <input matInput 
+                        [(ngModel)]="data.enddate"
+                        type="datetime-local" 
+                        
+                        class="form-control">
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+   
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button class="mat-raised-button" (click)="close()">No Thanks</button>
+    <button mat-button  [mat-dialog-close]="data" cdkFocusInitial >Ok</button>
+</div>

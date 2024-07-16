@@ -1,18 +1,19 @@
 .filter {
     margin-left: 50px;
-    width: 80%;
+    width: 70%;
 }
 
 .table {
     font-size: small;
     margin-left: 50px;
     margin-top: 15px;
-    width:90%;
+    width: 80%;
 }
 
 td {
     border-bottom: 1px solid #ddd;
-    height:50px;
+    height: 50px;
+    width: 25%;
 }
 
 .linkButton {
@@ -26,12 +27,7 @@ td {
     border-left: 1px solid #CCCCCC;
 }
 
-button.linkButton {
-    background-color: #cac7c7;
-    cursor: pointer;
-}
-
-.createExperiment {
+.addxApp {
     text-align: center;
     background-color: #cac7c7;
     color: #333333;
@@ -41,5 +37,5 @@ button.linkButton {
     display: block;
     margin-top: 15px;
     cursor: pointer;
-    width:12%;
+    width:6%
 }

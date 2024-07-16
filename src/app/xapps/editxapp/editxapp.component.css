@@ -1,0 +1,30 @@
+a:link,
+a:visited {
+    background-color: #b68a87;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 75%;
+}
+
+a:hover,
+a:active {
+    background-color: #c76861;
+}
+
+input {
+    border: 1px solid black;
+}
+
+label {
+    font-size: small;
+    margin-left: 50px;
+}
+
+.form-control {
+    width: 75%;
+    margin-bottom: 5px;
+    margin-left: 50px;
+}

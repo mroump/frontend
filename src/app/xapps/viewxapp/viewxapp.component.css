@@ -1,0 +1,28 @@
+a:link,
+a:visited {
+    background-color: #b68a87;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 75%;
+}
+
+a:hover,
+a:active {
+    background-color: #c76861;
+}
+
+.viewXappDetails {
+    text-align: center;
+    border: 1px solid #333333;
+    border-radius: 10px;
+    padding:50px;
+    margin:50px;
+}
+
+label {
+    font-size: medium;
+    /* margin-left: 50px; */
+}

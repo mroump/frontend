@@ -234,6 +234,7 @@ export class AccountPage extends React.Component {
       validated: this.state.errors.phoneNumber !== "" ? ValidatedOptions.error : ValidatedOptions.default
     }, /*#__PURE__*/React.createElement(TextInput, {
       isRequired: true,
+      isReadOnly: false,
       type: "text",
       id: "phone-number",
       name: "phoneNumber",
@@ -263,6 +264,7 @@ export class AccountPage extends React.Component {
       validated: this.state.errors.city !== "" ? ValidatedOptions.error : ValidatedOptions.default
     }, /*#__PURE__*/React.createElement(TextInput, {
       isRequired: true,
+      writable: true,
       type: "text",
       id: "city",
       name: "city",

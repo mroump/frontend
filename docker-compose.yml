@@ -3,7 +3,7 @@ version: "3"
 services: 
 
   docker-angular-keycloak:
-    image: quay.io/keycloak/keycloak
+    image: quay.io/keycloak/keycloak:23.0.6
     ports:
       - 8080:8080
     environment:
@@ -26,6 +26,5 @@ services:
     volumes:
       - "/frontend/node_modules"
       - ".:/frontend"
-
 
 

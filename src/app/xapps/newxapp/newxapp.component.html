@@ -1,0 +1,24 @@
+<h3 style="margin-left: 50px;">xApp</h3>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div>
+        <a href="/xapps">Back</a>
+    </div>
+    <div>
+        <label for="name">xApp ame</label><br>
+        <input id="name" placeholder="Enter xApp's name" type="text" class="form-control" formControlName="name">
+    </div>
+    <div>
+        <label for="description">Description</label><br>
+        <input id="description" placeholder="Enter description" type="text" class="form-control" formControlName="description">
+    </div>
+    <div>
+        <label for="status">Status</label><br>
+        <input id="status" placeholder="Enter status" type="text" class="form-control" formControlName="status">
+    </div>
+
+
+    <button type="submit" [disabled]="!form.valid">Submit</button>
+
+
+</form>
