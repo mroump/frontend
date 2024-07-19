@@ -1,6 +1,14 @@
 /* Patternfly CSS places a "bg-login.jpg" as the background on this ".login-pf" class.
    This clashes with the "keycloak-bg.png' background defined on the body below.
    Therefore the Patternfly background must be set to none. */
+
+body {
+    background-image: url(../img/home_screen.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
 .login-pf {
     background: none;
 }
@@ -9,9 +17,11 @@
     /* background: url("../img/logo.png") no-repeat center center fixed;
     background-size: cover;
     height: 100%; */
-    background: whitesmoke;
+
+    /*background: #00042E;*/
     background-size: cover;
     height: 100%;
+    background-color: #00042E;
 }
 
 textarea.pf-c-form-control {
@@ -98,10 +108,11 @@ div.kc-logo-text span {
 }
 
 #kc-header {
-    color: #24456c;
+    color: #1e0b4b;
     overflow: visible;
     white-space: nowrap;
-    text-align: center;
+    /*text-align: center;    */
+    height: 370px;
 }
 
 #kc-header-wrapper {
@@ -109,8 +120,10 @@ div.kc-logo-text span {
     text-transform: uppercase;
     letter-spacing: 3px;
     line-height: 1.2em;
-    padding: 62px 10px 20px;
+    /*padding: 405px 10px 20px;*/
     white-space: normal;
+    margin-right: 160px;
+    display: none;
 }
 
 #kc-content {
@@ -375,7 +388,7 @@ ul#kc-totp-supported-apps {
 @media (max-width: 767px) {
 
     .login-pf body {
-        background: rgb(143, 38, 38);
+        background: #1e0b4b;
     }
 
     #kc-header {
@@ -498,13 +511,16 @@ ul#kc-totp-supported-apps {
 }
 
 .card-pf {
-    margin: 0 auto;
-    box-shadow: var(--pf-global--BoxShadow--lg);
-    padding: 0 20px;
+    /*margin:0 auto;
+    box-shadow: var(--pf-global--BoxShadow--lg);*/
+    padding: 20px;
     max-width: 500px;
     border: 2px solid;
     border-color: black;
-    background-color: #f7f2f2;
+    background-color: #b6d8f6;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-left: 390px;
 }
 
 /*phone*/
@@ -531,6 +547,7 @@ ul#kc-totp-supported-apps {
 .login-pf-page .login-pf-signup {
     font-size: 15px;
     color: #2271d1;
+    background-color: #19193b;
 }
 
 #kc-content-wrapper .row {
@@ -541,6 +558,7 @@ ul#kc-totp-supported-apps {
 .login-pf-page.login-pf-page-accounts {
     margin-left: auto;
     margin-right: auto;
+    background-color: #19193b;
 }
 
 .login-pf-page .btn-primary {
@@ -553,6 +571,7 @@ ul#kc-totp-supported-apps {
 
 .login-pf-page .list-view-pf-description {
     width: 100%;
+
 }
 
 #kc-form-login div.form-group:last-of-type,

@@ -48,5 +48,9 @@ export class AppComponent implements OnInit {
   public login() {
     this.keycloak.login();
   }
+
+  public logout() {
+    this.keycloak.logout();
+  }
   
 }

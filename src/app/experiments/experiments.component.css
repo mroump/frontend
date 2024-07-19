@@ -1,13 +1,32 @@
+.title {
+    /* margin-left: 120px;  */
+    color:#000080;
+    text-align: center;
+    font-weight: bold;
+    padding:20px;
+}
+
 .filter {
-    margin-left: 50px;
-    width: 80%;
+    margin-left: 120px;
+    width: 63%;
+    border:1px solid #6060c2;
+}
+
+.searchButton {
+    background-color: #a5c3de;
+    border-radius: 10px;
 }
 
 .table {
     font-size: small;
-    margin-left: 50px;
+    margin-left: 120px;
     margin-top: 15px;
-    width:90%;
+    width:70%;
+    background-color: -o-linear-gradient(#aa2b2bee #67245e, #000);
+}
+
+thead {
+    font-weight: bold;
 }
 
 td {
@@ -15,31 +34,49 @@ td {
     height:50px;
 }
 
-.linkButton {
+/* .linkButton {
     text-decoration: none;
     background-color: #EEEEEE;
-    color: #333333;
-    padding: 15px;
+    color: #6060c2;
+    padding: 10px;
     border-top: 1px solid #CCCCCC;
-    border-right: 1px solid #333333;
-    border-bottom: 1px solid #333333;
+    border-right: 1px solid #6060c2;
+    border-bottom: 1px solid #6060c2;
     border-left: 1px solid #CCCCCC;
-}
-
-button.linkButton {
-    background-color: #cac7c7;
     cursor: pointer;
+    font-size: .875rem;
+    border-radius: .2rem;
+} */
+
+a:hover,
+a:active {
+    /* background-color: #81a3c2; */
+    color: white;
 }
 
 .createExperiment {
     text-align: center;
-    background-color: #cac7c7;
-    color: #333333;
+    /* text-decoration: none;
+    background-color: #a5c3de;
+    color: #000080;
     padding: 15px;
-    border: 1px solid #333333;
+    border: 1px solid #000080;
     margin: auto;
     display: block;
     margin-top: 15px;
     cursor: pointer;
-    width:12%;
+    width:12%; */
 }
+
+.btn-info {
+    background: linear-gradient(90deg, #f4ba75 0%, #74d0ef 100%) !important;
+}
+
+.btn-primary {
+    background-color: #74d0ef !important;
+}
+
+.btn-warning {
+    background-color:  #f4ba75 !important;
+}
+    

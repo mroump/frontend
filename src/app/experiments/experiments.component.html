@@ -1,11 +1,26 @@
-<h3 style="margin-left: 50px;">Experiments</h3>
 
-<input type="text" placeholder="Search by Experiment name" #filter class="filter">
-<button class="primary" type="button" (click)="filterExperiments(filter.value)">Search</button>
+
+
+<h3 class="title">Experiments</h3>
+
+<input type="search" class="form-control mr-sm-2" placeholder="Search by Experiment name" #filter class="filter">
+<button class="btn btn-success my-2 my-sm-0" type="button" (click)="filterExperiments(filter.value)"><i class='bx bx-search-alt-2'></i> Search</button>
+<!-- 
+<br>
+<div style=" text-align: center; padding: 20px 0px;">
+    <button type="button" style="border:2px solid navy; border-radius: 20px; color:navy;"
+        title="Start"><i class='bx bx-play-circle'></i>Start Experiment</button>&nbsp;
+    <button type="button" style="border:2px solid navy; border-radius: 20px; color:navy;" title="Stop"><i
+            class='bx bx-stop-circle'></i>Stop Experiment</button>&nbsp;
+    <button type="button" style="border:2px solid navy; border-radius: 20px; color:navy;"
+        title="Schedule"><i class='bx bx-time-five'></i>Schedule Experiment</button>
+</div> -->
+
 
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
+            <!-- <td>Select</td> -->
             <td>Name</td>
             <td>Status</td>
             <td>Start Date</td>
@@ -16,18 +31,22 @@
     </thead>
     <tbody>
         <tr *ngFor="let experiment of experiments">
+            <!-- <td><input type="checkbox" id="checkbox"></td> -->
             <td>{{ experiment.name }}</td>
             <td>{{ experiment.status }}</td>
             <td>{{ experiment.startdate }}</td>
             <td>{{ experiment.enddate }}</td>            
             <td>{{ calculateDiff(experiment.startdate, experiment.enddate) | json }}</td>
-            <td><a href="#" [routerLink]="['/editexperiment/', experiment.id]" class="linkButton">Edit</a>
-                <button type="button" (click)="startExperiment(experiment.id)" class="linkButton">Start</button>
-                <button type="button" (click)="endExperiment(experiment.id)" class="linkButton">Stop</button>
-                <button type="button" (click)="showDialog(experiment.id)" class="linkButton">Schedule</button>                
+            <td><a href="#" [routerLink]="['/editexperiment/', experiment.id]" class="btn btn-warning"><i class='bx bxs-edit-alt'></i>Edit</a>&nbsp;
+                <button type="button" (click)="startExperiment(experiment.id)" class="btn btn-primary" title="Start Experiment"><i class='bx bx-play-circle'></i></button>&nbsp;
+                <button type="button" (click)="endExperiment(experiment.id)" class="btn btn-primary" title="Stop Experiment"><i class='bx bx-stop-circle'></i></button>&nbsp;
+                <button type="button" (click)="showDialog(experiment.id)" class="btn btn-primary" title="Schedule Experiment"><i class='bx bx-time-five'></i></button>               
             </td>
         </tr>        
     </tbody>
 </table>
 
-<a href="#" routerLink="/newexperiment" class="createExperiment">New Experiment</a>
+<div class="createExperiment">
+    <a href="#" routerLink="/newexperiment" class="btn btn-info">New Experiment</a>
+</div>
+

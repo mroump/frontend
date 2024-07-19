@@ -1,12 +1,31 @@
-label {
-    font-size: small;
-    margin-left: 50px;
+.title {
+    /* margin-left: 120px;  */
+    color: #000080;
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
 }
 
-.form-control {
-    width: 75%;
+label {
+    font-size: small;
+    /* margin-left: 120px; */
+}
+
+/* .form-control {
+     width: 75%; 
     margin-bottom: 5px;
-    margin-left: 50px;
+    margin-left: 120px;
+} */
+
+
+.container {
+    margin-left: 120px;
+    
+}
+
+.infoText {
+    color: #6060c2;
+    margin-top: 30px;
 }
 
 button {

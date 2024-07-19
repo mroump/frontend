@@ -1,7 +1,15 @@
+.title {
+    /* margin-left: 120px;  */
+    color: #000080;
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+}
+
 a:link,
 a:visited {
-    background-color: #b68a87;
-    color: white;
+    background-color: #74d0ef;
+    color: black;
     padding: 5px;
     text-align: center;
     text-decoration: none;
@@ -11,7 +19,8 @@ a:visited {
 
 a:hover,
 a:active {
-    background-color: #c76861;
+    background-color: #74d0ef;
+    color:white;
 }
 
 input {
@@ -20,13 +29,13 @@ input {
 
 label {
     font-size: small;
-    margin-left: 50px;
+    margin-left: 120px;
 }
 
 .form-control {
     width: 75%;
     margin-bottom: 5px;
-    margin-left: 50px;
+    margin-left: 120px;
 }
 
 .file-input {
@@ -35,4 +44,13 @@ label {
 
 .uploadInput {
     width: 75%;
+    margin-left: 120px;
+}
+
+.submitButton {
+    text-align: center;
+}
+
+.btn-warning {
+    background-color: #f4ba75 !important;
 }

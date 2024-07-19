@@ -1,8 +1,8 @@
-<h3 style="margin-left: 50px;">Experiment</h3>
+<h3 class="title">Edit Experiment</h3>
 
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form [formGroup]="form" (ngSubmit)="submit()" >
     <div>
-        <a href="/experiments">Back</a>
+        <a href="/experiments" class="btn btn-warning"><i class='bx bx-arrow-back'></i> Back</a>
     </div>
     <div>
         <label for="name">Name</label><br>
@@ -15,14 +15,8 @@
         <label for="yamldefinition">
             YAML Definition
         </label><br>
-    
-        <div class="col-8">
-            <label class="btn btn-default p-0">
-                <input type="file" class="uploadInput" id="file" (change)="selectFile($event)" />
-            </label>
-        </div>
+        <input type="file" class="uploadInput" id="file" (change)="selectFile($event)" />    
     </div>
-
     <div>
         <label for="startdate">
             Start Date
@@ -36,6 +30,8 @@
         <input id="enddate" [(ngModel)]="experiment.enddate" type="datetime" class="form-control" formControlName="enddate">
     </div>
 
-    <button  type="submit" [disabled]="!(form.valid && currentFile)" style="margin-left: 50px;" >Update</button>
+    <div class="submitButton">
+        <button  type="submit" [disabled]="!(form.valid && currentFile)" class="btn btn-primary" ><i class='bx bxs-edit-alt'></i> Update</button>
+    </div>
 
 </form>
