@@ -7,6 +7,16 @@
 }
 
 
+iframe {
+    border: none;
+    margin-left: 50px;
+    width:92%;
+    height:480px;
+    /* takes precedence over the width set with the HTML width attribute */
+}
+
+
+
 .filter {
     margin-left: 50px;
     width: 70%;

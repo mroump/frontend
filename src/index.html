@@ -25,8 +25,42 @@
   <style>
     .banner {
       background: linear-gradient(to left, #007bff, #9198e5);
-    }
+    }    
   </style>
+
+  <script>
+
+    function toggle_dashboard() {
+      var dashboard = document.getElementById('dashboard')
+      var newFrame = document.getElementById('newFrame')
+      var running = document.getElementById('running')
+
+      newFrame.style.display = 'none';
+      running.style.display = 'none';
+      dashboard.style.display = 'block'; 
+    }
+
+    function toggle_newFrame() {
+      var dashboard = document.getElementById('dashboard')
+      var newFrame = document.getElementById('newFrame')
+      var running = document.getElementById('running')
+
+      dashboard.style.display = 'none';
+      running.style.display = 'none';
+      newFrame.style.display = 'block';
+    }
+    
+    function toggle_running() {
+      var dashboard = document.getElementById('dashboard')
+      var newFrame = document.getElementById('newFrame')
+      var running = document.getElementById('running')
+
+      dashboard.style.display = 'none';
+      newFrame.style.display = 'none';
+      running.style.display = 'block';
+    }
+
+  </script>
 </head>
 <body>
   <app-root></app-root>
