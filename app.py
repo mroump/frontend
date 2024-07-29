@@ -16,17 +16,17 @@ mysql = MySQL(app)
 
 @app.route('/experiments', methods=['GET'])
 def getAll():
-    experiments = []
+    #experiments = []
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT name FROM experiments where id =1" )
+    cursor.execute("SELECT * FROM experiments ORDER BY 1 DESC" )
     data = cursor.fetchall()
     #for r in cursor.fetchall():
     #    experiments.append({"id": r[0], "name": r[1], "status": r[2], "startdate": r[3], "enddate": r[4]})
     
     mysql.connection.commit()
     cursor.close()
-    print(data)
     return redirect('/experiments')
+
 
 
 
