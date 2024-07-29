@@ -28,7 +28,7 @@ def getAll():
     
     mysql.connection.commit()
     cursor.close()
-    return redirect('/experiments')
+    return jsonify(data)
 
 
 
