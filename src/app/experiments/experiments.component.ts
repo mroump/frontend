@@ -23,7 +23,7 @@ export class ExperimentsComponent {
               public dialog: MatDialog) { }
   
   ngOnInit(): void {
-    this.experimentService.getAll().subscribe((data: Experiment[])=>{
+    this.experimentService.getAll().subscribe((data: Experiment[])=>{     
       this.experiments = data; 
     })  
   }
