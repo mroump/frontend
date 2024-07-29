@@ -1,9 +1,12 @@
 from flask import Flask, jsonify, redirect, render_template, url_for
 from flask_mysqldb import MySQL
 
+from flask_cors import CORS, cross_origin
+
 app = Flask(__name__)
 
-
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 # MySQL configurations
 app.config['MYSQL_HOST'] = 'localhost'
