@@ -33,14 +33,14 @@ export class ExperimentService {
   }
 
   startExperiment(id:number): Observable<any> {
-    return this.httpClient.put(this.apiURL + '/startExperiment/' + id, this.httpOptions)
+    return this.httpClient.post(this.apiURL + '/startExperiment/' + id, this.httpOptions)
     .pipe( 
        catchError(this.errorHandler)
     )
   }
 
   endExperiment(id:number): Observable<any> {
-    return this.httpClient.put(this.apiURL + '/endExperiment/' + id, this.httpOptions)
+    return this.httpClient.post(this.apiURL + '/endExperiment/' + id, this.httpOptions)
     .pipe( 
       catchError(this.errorHandler)
     )
@@ -60,8 +60,9 @@ export class ExperimentService {
     )
   }
 
-  create(experiment:Experiment): Observable<any> {
-    return this.httpClient.post(this.apiURL + '/newexperiment', JSON.stringify(experiment), this.httpOptions)
+  //addExperiment(experiment:Experiment): Observable<any> {
+  create(name:string, startdate:Date, enddate:Date): Observable<any> {
+    return this.httpClient.post(this.apiURL + '/newexperiment/' + name + '/' + startdate + '/' + enddate, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
