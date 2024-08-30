@@ -65,8 +65,6 @@ def endExperiment(exp_name):
         return str(e) + "There was a problem stopping experiment."
 
 
-
-
 @app.route('/experimentsResults/<exp_name>', methods=['GET', 'POST'])
 def experimentsResults(exp_name):
     try:
@@ -80,10 +78,8 @@ def experimentsResults(exp_name):
 def resultsPower(exp_name):
     try:
         response = requests.get('http://localhost:8081/results/' + exp_name + '/Power')
-        print(response.status_code)
         response.raise_for_status()  # raises exception when not a 2xx response
         print(response.status_code)
-        print(response)
         if (response.status_code == 500):
             response = " = "
         return json.loads(response.content)
@@ -103,20 +99,11 @@ def resultsCSI(exp_name):
 @app.route('/resultsPlot/<exp_name>', methods=['GET', 'POST'])
 def resultsPlot(exp_name):
     try:
-        #response = requests.get('http://localhost:8081/results/' + exp_name + '/Plot')
-        #urllib.request.urlretrieve('http://localhost:8081/results/' + exp_name + '/Plot', "local-filename.jpg")
-       
-        # img_data = requests.get('http://localhost:8081/results/' + exp_name + '/Plot').content
-        # with open('image_name.jpg', 'wb') as handler:
-        #     handler.write(img_data)
         urllib.request.urlretrieve('http://localhost:8081/results/' + exp_name + '/Plot', "./src/assets/local-filename.jpg")
         return "ok"
     
     except Exception as e:
         return str(e) + "There was a problem in resultsPlot."
-
-
-
 
 
 

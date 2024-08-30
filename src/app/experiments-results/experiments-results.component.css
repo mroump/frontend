@@ -6,6 +6,21 @@
     padding: 20px;
 }
 
+a:link,
+a:visited {
+    background-color: #a6c1e0;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 75%;
+}
+
+.btn-warning {
+    background-color: #f4ba75 !important;
+}
+
 .table {
     font-size: small;
     margin: 25px 0 0 50px;

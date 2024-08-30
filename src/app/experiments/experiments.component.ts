@@ -16,11 +16,6 @@ import {MatTabsModule} from '@angular/material/tabs';
   styleUrl: './experiments.component.css'
 })
 export class ExperimentsComponent {
-  //experiments: Experiment[] = [];
-  startdate: Date;
-  enddate: Date;
-
-
   devices:any;
   experiments:any = [];
   status:any;

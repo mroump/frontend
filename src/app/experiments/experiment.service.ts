@@ -54,8 +54,6 @@ export class ExperimentService {
   }
 
 
-
-
   experimentsResults(exp_name:string): Observable<any> {
     return this.httpClient.get(this.apiURL + '/experimentsResults/' + exp_name, this.httpOptions)
     .pipe( 
