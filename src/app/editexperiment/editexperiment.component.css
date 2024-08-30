@@ -22,6 +22,25 @@ a:active {
     background-color: #a6c1e0;
 }
 
+.table {
+    font-size: small;
+    margin-top: 15px;
+    width: 100%;
+    background-color: -o-linear-gradient(#aa2b2bee #67245e, #000);
+}
+
+thead {
+    font-weight: bold;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+    height: 50px;
+}
+
+
+
+
 input {
     border: 1px solid black;
 }

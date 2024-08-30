@@ -1,0 +1,46 @@
+.title {
+    /* margin-left: 120px;  */
+    color: #000080;
+    text-align: center;
+    font-weight: bold;
+    padding: 50px;
+}
+
+a:link,
+a:visited {
+    background-color: #a6c1e0;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 75%;
+}
+
+a:hover,
+a:active {
+    background-color: #a6c1e0;
+}
+
+.border {
+    border: 1px solid #8596a8 !important;
+    border-radius: 25px;
+    margin: 100px 175px;
+    padding: 50px;   
+}
+
+.status {
+    text-align: center;
+    color: #24244b;
+    font-weight: bold;
+}
+
+.buttons {
+    text-align: center;
+    padding-top: 30px;
+    
+}
+
+.btn-warning {
+    background-color: #f4ba75 !important;
+}

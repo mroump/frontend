@@ -1,6 +1,10 @@
-from flask import Flask, flash, jsonify, redirect, render_template, request, url_for
+import io
+from flask import Flask, flash, json, jsonify, redirect, render_template, request, send_file, url_for
 from flask_mysqldb import MySQL
 from flask_cors import CORS, cross_origin
+import requests
+import datetime
+import urllib.request
 
 app = Flask(__name__)
 
@@ -16,83 +20,104 @@ mysql = MySQL(app)
 
 
 
-@app.route('/experiments', methods=['GET', 'POST'])
-def getAll():
-    experiments = []
-    cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM experiments ORDER BY 1 DESC" )
-    for r in cursor.fetchall():
-        experiments.append({"id": r[0], "name": r[1], "status": r[2], "startdate": r[3], "enddate": r[4]})
-    
-    mysql.connection.commit()
-    cursor.close()
-    return jsonify(experiments)
-
-
-@app.route('/startExperiment/<int:id>', methods=['GET', 'POST'])
-def startExperiment(id):
+@app.route('/devices', methods=['GET'])
+def getAllDevices():
     try:
-        status = 'Running'
-        cursor = mysql.connection.cursor()
-        sql = "UPDATE experiments SET status = '{0}' WHERE id={1}".format(status, id)
-        cursor.execute(sql)
-        mysql.connection.commit()
-        cursor.close()
-        return redirect('/experiments')
+        response = requests.get('http://localhost:8081/find_devices')
+        return response.json()
     except Exception as e:
-        return str(e) + "There was a problem updating experiment."
+        return str(e) + "There was a problem getting the devices."
+
+
+@app.route('/experiments', methods=['GET'])
+def getAllExperiments():
+    try:
+        response = requests.get('http://localhost:8081/list_experiments')
+        return response.json()
+    except Exception as e:
+        return str(e) + "There was a problem getting the experiments."
+
+
+@app.route('/experimentsStatus/<exp_name>', methods=['GET'])
+def getExperimentsStatus(exp_name):
+    try:
+        response = requests.get('http://localhost:8081/current_status/<exp_name>')
+        return response.json() # response.json()
+    except Exception as e:
+        return str(e) + "There was a problem getting the experiment's status."
+
+
+@app.route('/startExperiment/<exp_name>', methods=['GET', 'POST'])
+def startExperiment(exp_name):
+    try:
+        response = requests.get('http://localhost:8081/start/' + exp_name)
+        return response.json()
+    except Exception as e:
+        return str(e) + "There was a problem starting experiment."
     
 
-@app.route('/endExperiment/<int:id>', methods=['GET', 'POST'])
-def endExperiment(id):
+@app.route('/stopExperiment/<exp_name>', methods=['GET', 'POST'])
+def endExperiment(exp_name):
     try:
-        status = 'Stopped'
-        cursor = mysql.connection.cursor()
-        sql = "UPDATE experiments SET status = '{0}' WHERE id={1}".format(status, id)
-        cursor.execute(sql)
-        mysql.connection.commit()
-        cursor.close()
-        return redirect('/experiments')
+        response = requests.get('http://localhost:8081/stop/' + exp_name)
+        return response.json()
     except Exception as e:
-        return str(e) + "There was a problem updating experiment."
+        return str(e) + "There was a problem stopping experiment."
 
 
 
-@app.route('/newexperiment/<string:name>/<startdate>/<enddate>', methods=['GET', 'POST'])
-def addExperiment(name,startdate,enddate):
-    print(request)
-    if request.method == 'POST':
-        """ if 'files[]' not in request.files:
-            flash('No file part')
-            return redirect('/newexperiment')
-        files = request.files.getlist('files[]') 
-        filenames = list()       
-        for file in files:
-            if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))          
-                filenames.append(filename) """
 
-        status = 'Running'    
+@app.route('/experimentsResults/<exp_name>', methods=['GET', 'POST'])
+def experimentsResults(exp_name):
+    try:
+        response = requests.get('http://localhost:8081/results/' + exp_name)
+        return response.json()
+    except Exception as e:
+        return str(e) + "There was a problem in experimentsResults."
 
-        if not name or not startdate or not enddate:
-            flash('Please enter all the fields', 'error')
-            return redirect('/newexperiment')
-        else:              
-            try:
-                cursor = mysql.connection.cursor()
-                sql = "INSERT INTO experiments (name, status, startdate, enddate) VALUES ('{0}', '{1}', '{2}', '{3}')".format(name, status, startdate, enddate)
-                print(sql)
-                cursor.execute("INSERT INTO experiments (name, status, startdate, enddate) VALUES ('%s', '%s', '%s', '%s')", (name, status, startdate, enddate))
-                print(startdate)
-                mysql.connection.commit()
-                cursor.close()    
-                
-                return redirect('/experiments')
-            except Exception as e:
-                return "There was a problem adding the Experimtent."
-    else:
-        return redirect('/newexperiment')
+
+@app.route('/resultsPower/<exp_name>', methods=['GET', 'POST'])
+def resultsPower(exp_name):
+    try:
+        response = requests.get('http://localhost:8081/results/' + exp_name + '/Power')
+        print(response.status_code)
+        response.raise_for_status()  # raises exception when not a 2xx response
+        print(response.status_code)
+        print(response)
+        if (response.status_code == 500):
+            response = " = "
+        return json.loads(response.content)
+    except Exception as e:
+        return str(e) + "There was a problem in resultsPower."
+   
+    
+@app.route('/resultsCSI/<exp_name>', methods=['GET', 'POST'])
+def resultsCSI(exp_name):
+    try:
+        response = requests.get('http://localhost:8081/results/' + exp_name + '/CSI')
+        return response.json()
+    except Exception as e:
+        return str(e) + "There was a problem in resultsCSI."
+    
+
+@app.route('/resultsPlot/<exp_name>', methods=['GET', 'POST'])
+def resultsPlot(exp_name):
+    try:
+        #response = requests.get('http://localhost:8081/results/' + exp_name + '/Plot')
+        #urllib.request.urlretrieve('http://localhost:8081/results/' + exp_name + '/Plot', "local-filename.jpg")
+       
+        # img_data = requests.get('http://localhost:8081/results/' + exp_name + '/Plot').content
+        # with open('image_name.jpg', 'wb') as handler:
+        #     handler.write(img_data)
+        urllib.request.urlretrieve('http://localhost:8081/results/' + exp_name + '/Plot', "./src/assets/local-filename.jpg")
+        return "ok"
+    
+    except Exception as e:
+        return str(e) + "There was a problem in resultsPlot."
+
+
+
+
 
 
 

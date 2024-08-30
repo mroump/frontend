@@ -1,0 +1,19 @@
+
+<div class="border">
+   
+    <div>
+        <a href="/experiments" class="btn btn-warning"><i class='bx bx-arrow-back'></i> Back</a>
+    </div>
+
+    <h3 class="title">{{ exp_name }}'s Status :</h3>
+
+    <div class="status">{{ exp_status }}</div>
+
+    <div class="buttons">
+        <button type="button" (click)="startExperiment(exp_name)" class="btn btn-primary" title="Start Experiment"><i
+                class='bx bx-play-circle'></i> Start Experiment</button>&nbsp;
+        <button type="button" (click)="endExperiment(exp_name)" class="btn btn-primary" title="Stop Experiment"><i
+                class='bx bx-stop-circle'></i> Stop Experiment</button>&nbsp;
+    </div>
+
+</div>

@@ -1,0 +1,29 @@
+<h3 class="title">{{ exp_name }}'s Results</h3>
+
+
+<table class="table table-striped table-bordered" >
+    <tr>
+        <td colspan="2" style="text-align: center;"><b><u>Plot of the sent signal vs the received signal :</u></b></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">
+            <img style="height: 300px;" src="../assets/local-filename.jpg" alt="plot"  />
+        </td>
+    </tr>
+    <tr>
+        <td><b><u>CSI Results :</u></b></td>
+        <td><b><u>Power Results :</u></b></td>
+    </tr>
+    <tr>
+        <td>
+            <code>
+                <pre [innerHTML]="csiData | json "></pre>
+            </code>
+        </td>
+        <td>
+            <code>
+                <pre [innerHTML]="powerData | json "></pre>
+            </code>
+        </td>
+    </tr>
+</table>

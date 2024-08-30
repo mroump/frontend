@@ -20,7 +20,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DialogComponent } from './dialog/dialog.component';
 
-
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({

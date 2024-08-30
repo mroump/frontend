@@ -18,78 +18,79 @@ export class ExperimentService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll(): Observable<any> {
+  getAllDevices(): Observable<any> {
+    return this.httpClient.get(this.apiURL + '/devices')
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getAllExperiments(): Observable<any> {
     return this.httpClient.get(this.apiURL + '/experiments')
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  filterExperiments(filter: string): Observable<any> {
-    return this.httpClient.get(this.apiURL + '/experiments' + filter, this.httpOptions)
+  getExperimentsStatus(exp_name:string): Observable<any> {
+    return this.httpClient.get(this.apiURL + '/experimentsStatus/' + exp_name)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  startExperiment(id:number): Observable<any> {
-    return this.httpClient.post(this.apiURL + '/startExperiment/' + id, this.httpOptions)
+  startExperiment(exp_name:string): Observable<any> {
+    return this.httpClient.get(this.apiURL + '/startExperiment/' + exp_name, this.httpOptions)
     .pipe( 
        catchError(this.errorHandler)
     )
   }
 
-  endExperiment(id:number): Observable<any> {
-    return this.httpClient.post(this.apiURL + '/endExperiment/' + id, this.httpOptions)
+  endExperiment(exp_name:string): Observable<any> {
+    return this.httpClient.get(this.apiURL + '/stopExperiment/' + exp_name, this.httpOptions)
     .pipe( 
       catchError(this.errorHandler)
     )
   }
 
-  scheduleExperiment(id:number, startdate:Date, enddate:Date): Observable<any> {
-    return this.httpClient.put(this.apiURL + '/scheduleExperiment/' + id + '/' + startdate + '/' + enddate, this.httpOptions)
+
+
+
+  experimentsResults(exp_name:string): Observable<any> {
+    return this.httpClient.get(this.apiURL + '/experimentsResults/' + exp_name, this.httpOptions)
     .pipe( 
        catchError(this.errorHandler)
     )
   }
 
-  find(id:number): Observable<any> {
-    return this.httpClient.get(this.apiURL + '/editexperiment/' + id, this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
-  }
-
-  //addExperiment(experiment:Experiment): Observable<any> {
-  create(name:string, startdate:Date, enddate:Date): Observable<any> {
-    return this.httpClient.post(this.apiURL + '/newexperiment/' + name + '/' + startdate + '/' + enddate, this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
-  }  
-
-  update(id:number, experiment:Experiment): Observable<any> {
-    return this.httpClient.put(this.apiURL + '/editexperiment/' + id, JSON.stringify(experiment), this.httpOptions)
+  resultsPower(exp_name:string): Observable<any> {
+    return this.httpClient.get(this.apiURL + '/resultsPower/' + exp_name, this.httpOptions)
     .pipe( 
-      catchError(this.errorHandler)
+       catchError(this.errorHandler)
+    )
+  }
+
+  resultsCSI(exp_name:string): Observable<any> {
+    return this.httpClient.get(this.apiURL + '/resultsCSI/' + exp_name, this.httpOptions)
+    .pipe( 
+       catchError(this.errorHandler)
+    )
+  }
+
+  resultsPlot(exp_name:string): Observable<any> {
+    return this.httpClient.get(this.apiURL + '/resultsPlot/' + exp_name)
+    .pipe( 
+       catchError(this.errorHandler)
     )
   }
 
 
-  upload(file: File): Observable<HttpEvent<any>> {
-    const formData: FormData = new FormData();
-    formData.append('file', file);
 
-    const req = new HttpRequest('POST', this.apiURL + '/upload', formData, {
-      //responseType: 'json',
-    });
 
-    return this.httpClient.request(req);
-  }
 
-  getFiles(): Observable<any> {
-    return this.httpClient.get(this.apiURL + '/files');
-  }
+
+
+
 
   
   errorHandler(error:any) {

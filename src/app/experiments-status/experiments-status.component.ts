@@ -1,25 +1,22 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ExperimentService } from '../experiments/experiment.service';
-import { ActivatedRoute, Router } from '@angular/router';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-editexperiment',
+  selector: 'app-experiments-status',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './editexperiment.component.html',
-  styleUrl: './editexperiment.component.css'
+  imports: [],
+  templateUrl: './experiments-status.component.html',
+  styleUrl: './experiments-status.component.css'
 })
-export class EditexperimentComponent {
+export class ExperimentsStatusComponent {
   exp_name!: string;
   status:any;
   exp_status:string;
 
   constructor(
     public experimentService: ExperimentService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -56,5 +53,4 @@ export class EditexperimentComponent {
       this.exp_status = 'Stopped';
     });
   }
-
 }

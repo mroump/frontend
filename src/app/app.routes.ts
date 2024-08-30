@@ -3,8 +3,8 @@ import { KeycloakAuthGuard } from './app.authguard';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ExperimentsComponent } from './experiments/experiments.component';
-import { EditexperimentComponent } from './editexperiment/editexperiment.component';
-import { NewexperimentComponent } from './newexperiment/newexperiment.component';
+import { ExperimentsStatusComponent } from './experiments-status/experiments-status.component';
+import { ExperimentsResultsComponent } from './experiments-results/experiments-results.component';
 import { XappsComponent } from './xapps/xapps/xapps.component';
 import { NewxappComponent } from './xapps/newxapp/newxapp.component';
 import { EditxappComponent } from './xapps/editxapp/editxapp.component';
@@ -28,19 +28,19 @@ export const APP_ROUTES: Routes = [
     component: ExperimentsComponent,
     //canActivate: [KeycloakAuthGuard]
   },
-  {
+ /*  {
     path: 'experiments/:filter',
     component: ExperimentsComponent,
     //canActivate: [KeycloakAuthGuard]
-  },
+  }, */
   {
-    path: 'editexperiment/:experimentId',
-    component: EditexperimentComponent,
+    path: 'experiments_status/:exp_name',
+    component: ExperimentsStatusComponent,
     //canActivate: [KeycloakAuthGuard]
   },
   {
-    path: 'newexperiment',
-    component: NewexperimentComponent,
+    path: 'experiments_results/:exp_name',
+    component: ExperimentsResultsComponent,
     //canActivate: [KeycloakAuthGuard]
   },
   {
