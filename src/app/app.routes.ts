@@ -6,9 +6,6 @@ import { ExperimentsComponent } from './experiments/experiments.component';
 import { ExperimentsStatusComponent } from './experiments-status/experiments-status.component';
 import { ExperimentsResultsComponent } from './experiments-results/experiments-results.component';
 import { XappsComponent } from './xapps/xapps/xapps.component';
-import { NewxappComponent } from './xapps/newxapp/newxapp.component';
-import { EditxappComponent } from './xapps/editxapp/editxapp.component';
-import { ViewxappComponent } from './xapps/viewxapp/viewxapp.component';
 import { RepositoryComponent } from './repository/repository.component';
 
 export const APP_ROUTES: Routes = [
@@ -46,26 +43,6 @@ export const APP_ROUTES: Routes = [
   {
     path: 'xapps',
     component: XappsComponent,
-    //canActivate: [KeycloakAuthGuard]
-  },
-  {
-    path: 'xapps/:filter',
-    component: XappsComponent,
-    //canActivate: [KeycloakAuthGuard]
-  },
-  {
-    path: 'newxapp',
-    component: NewxappComponent,
-    //canActivate: [KeycloakAuthGuard]
-  },
-  {
-    path: 'editxapp/:xappId',
-    component: EditxappComponent,
-    //canActivate: [KeycloakAuthGuard]
-  },
-  {
-    path: 'viewxapp/:xappId',
-    component: ViewxappComponent,
     //canActivate: [KeycloakAuthGuard]
   },
   {

@@ -18,7 +18,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { DialogComponent } from './dialog/dialog.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -39,8 +38,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 
 @NgModule
 ({
-  declarations: [
-    DialogComponent],
+  declarations: [],
   imports: [
     KeycloakAngularModule,
     BrowserModule,

@@ -4,7 +4,6 @@ import { ExperimentService } from './experiment.service';
 import { Experiment } from './experiment';
 import { RouterModule, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
 
 import {MatTabsModule} from '@angular/material/tabs';
 
