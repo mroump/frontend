@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExperimentService } from './experiment.service';
-import { Experiment } from './experiment';
 import { RouterModule, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
